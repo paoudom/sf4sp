@@ -9,6 +9,7 @@ easy_admin:
         User:
             title: 'Utilisateurs'
             class: App\Entity\User
+            controller: App\Controller\Admin\AdminUserController
             role: ROLE_ADMIN
             name_property_path: 'username'
             display_name: true
@@ -33,6 +34,11 @@ easy_admin:
                     - { name: 'promote', css_class: 'btn btn-success' }
                     - { name: 'demote', css_class: 'btn btn-danger'  }
                     - { name: 'list', css_class: 'btn btn-primary'  }
+            new:
+                fields:
+                    - { property: 'username', label: 'Nom' }
+                    - { property: 'email', label: 'Mail' }
+                    - { property: 'password', label: 'Password' }
 
     design:
         menu:
