@@ -1,0 +1,49 @@
+easy_admin:
+    formats:
+        date: 'd/m/Y'
+    site_name: SF4SP
+    user:
+        name_property_path: 'username'
+        display_name: true
+    entities:
+        User:
+            title: 'Utilisateurs'
+            class: App\Entity\User
+            role: ROLE_ADMIN
+            name_property_path: 'username'
+            display_name: true
+            list:
+                actions:
+                    - { name: 'promote', icon: 'plus-square' }
+                    - { name: 'demote', icon: 'minus-square' }
+                    - { name: 'new', label: 'Ajouter', icon: 'add' }
+                    - { name: 'show', label: '', icon: 'search' }
+                    - { name: 'edit', label: '', icon: 'edit' }
+                    - { name: 'delete', label: '', icon: 'trash' }
+                fields: ['id', 'username', 'email', 'roles']
+            show:
+                title: 'Fiche de l''utilisateur'
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'username', label: 'Nom' }
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'roles', label: 'roles' }
+            edit:
+                actions:
+                    - { name: 'promote', css_class: 'btn btn-success' }
+                    - { name: 'demote', css_class: 'btn btn-danger'  }
+                    - { name: 'list', css_class: 'btn btn-primary'  }
+
+    design:
+        menu:
+            - label: 'Homepage'
+              route: 'homepage'
+              icon: 'home'
+            - label: 'Liste des utilisateurs'
+              entity: 'User' 
+              params: { sortField: 'username' } 
+              icon: 'users'
+              children:
+                  - { entity: 'User', params: { action: 'list' }, label: 'liste des utilisateurs', icon: 'address-book' }
+                  - { entity: 'User', params: { action: 'new' }, label: 'ajouter un utilisateur', icon: 'user-plus' }
+

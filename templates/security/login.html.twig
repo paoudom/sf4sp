@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4 row">
+    <div class="card col-md-6 m-auto">
+        <div class="card-header">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        </div>
+        <div class="card-body">
+                <form method="post" class="form">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                
+                    <div class="form-group">
+                        <label for="inputUsername" class="sr-only">Username</label>
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    </div>
+
+                    {% if is_mobile() %}
+                       <div class="form-group">
+                            <ul class="list-unstyled">
+                                <li><button class="btn btn-dark btn-sm mb-2 btn-block" type="submit">Sign in</button></li>
+                                <li><a class="btn btn-secondary btn-sm btn-block" href="{{ path('app_forgotten_password') }}">Forgotten password</a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                       <div class="form-group float-right">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><button class="btn btn-dark" type="submit">Sign in</button></li>
+                                <li class="list-inline-item"><a class="btn btn-secondary" href="{{ path('app_forgotten_password') }}">Forgotten password</a></li>
+                            </ul>
+                        </div>                 
+                    {% endif %}
+
+                    
+                </form>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

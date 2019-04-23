@@ -1,0 +1,17 @@
+.table-mobile{
+    font-size: 14px;
+}
+
+.table-mobile td{
+    padding: 2px;
+}
+
+.btn-mobile{
+    font-size: 14px;
+}
+
+.pagination-mobile{
+
+    font-size: 12px;
+    margin-left: -15px;
+}

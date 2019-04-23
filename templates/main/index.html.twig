@@ -1,0 +1,40 @@
+{% extends is_mobile() ? "mobile/base.html.twig" : "base.html.twig" %}
+
+{% block pagetitle %}<h1 class="text-center display-4">SYMFONY 4 STARTER PACK</h1>{% endblock %}
+
+{% block body %}
+<hr />
+<div class="content pl-5 pr-5 ">
+
+    <h3 class="h3">Installation</h3>
+    <p>Clonez ou télécharger le projet et récupérez les dépendances avec composer : </p>
+    <div class="alert alert-secondary pb-0">
+        <pre><code>composer install</code></pre>
+    </div>
+    <p>Créez un fichier .env.local avec vos configurations de bdd et mail. Pour créer la base de données vous pouvez utiliser la console ou en la créant directement avec mysql (attention au charset : utf8_general_ci</p>   
+    <div class="alert alert-secondary pb-0">
+        <pre><code>php bin/console doctrine:database:create</code></pre>
+    </div>
+
+    <p>Une fois la base de données créée, il faut créer le schéma des tables</p>
+    <div class="alert alert-secondary pb-0">
+        <pre><code>php bin/console doctrine:schema:create</code></pre>
+    </div>
+    <p>Il faudra ensuite ajouter l'utilisateur admin avec les fixtures : </p>
+    <div class="alert alert-secondary pb-0">
+        <pre><code>php bin/console doctrine:fixtures:load</code></pre>
+    </div>
+    <h2 class="h3">Les bundles intégrés</h2>
+
+    <ul class="list-unstyled">
+        <li class="p-2"><a href="https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html" target='_blank'>EasyAdminBundle</a> : Administration du site</li>
+        <li class="p-2"><a href="https://github.com/KnpLabs/KnpPaginatorBundle" target='_blank'>knpPaginator</a> : Pagination des requetes</li>
+        <li class="p-2"><a href="https://github.com/dustin10/VichUploaderBundle" target='_blank'>VichUploaderBundle</a> : Gestion des uploads</li>
+        <li class="p-2"><a href="https://github.com/suncat2000/MobileDetectBundle" target='_blank'>MobileDetect</a> : Détection des mobiles</li>
+        <li class="p-2"><a href="https://github.com/fzaninotto/Faker" target='_blank'>Faker</a> : Pour créer du faux contenu</li>
+        <li class="p-2"><a href="https://packagist.org/packages/nikic/php-parser" target='_blank'>PhpParser</a> : Permet de régler le problème de la barre</li>
+    </ul>
+    
+
+</div>
+{% endblock %}
